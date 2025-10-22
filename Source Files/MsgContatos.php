@@ -1,5 +1,5 @@
 <?php
-
+require_once './Conn.php';
 class MsgContatos
 {
     public object $connect;
@@ -17,8 +17,12 @@ class MsgContatos
             LIMIT 40
         ";
         //Prepara e executa a query
-        $result_msgs_contatos = $this -> connect->prepare($query_msgs_contatos);
+        $result_msgs_contatos = $this->connect->prepare($query_msgs_contatos);
         //  Execução da Query
         $result_msgs_contatos->execute();
+        //   Ler mensagem que veio do banco de dados
+        $result_msgs_contatos->fetchAll();
+        //  Exibir mensagem
+        var_dump($result_msgs_contatos);
     }
 }

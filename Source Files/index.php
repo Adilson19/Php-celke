@@ -11,7 +11,7 @@
         require './MsgContatos.php';
         $listar = new MsgContatos();
         $msg = $listar->listar();
-        echo '$msg';
+        echo $msg;
     ?>
 </body>
 </html>
