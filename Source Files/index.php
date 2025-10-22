@@ -6,9 +6,16 @@
     <title>Celke</title>
 </head>
 <body>
+    <h1>Listar Mensagem de Contato</h1>
+    <a href="cadastrar.php">Cadastrar</a>
     <?php
-        require './Conn.php';
+        if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+
         require './MsgContatos.php';
+        require './Conn.php';        
         $listar = new MsgContatos();
         $dados = $listar->listar();
         //var_dump($dados);

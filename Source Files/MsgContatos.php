@@ -1,5 +1,5 @@
 <?php
-require_once './Conn.php';
+//require_once './Conn.php';
 class MsgContatos
 {
     public object $connect;
@@ -24,5 +24,31 @@ class MsgContatos
         return $result_msgs_contatos->fetchAll();
         //  Exibir mensagem
         //var_dump($result_msgs_contatos);
+    }
+
+    public function cadastrar(){
+        //var_dump($this->dados);
+        //  Criar objecto
+        $conn = new Conn();
+        //  Chamar o método conectar para estabelecer a conexão
+        $this->connect = $conn->conectar();
+        $query_msg_contato = "INSERT INTO msgs_contatos 
+            (nome, email, titulo_msg, conteudo_msg, created) VALUES 
+            (:nome, :email, :titulo_msg, :conteudo_msg, NOW())";
+        $cad_msg_contato = $this->connect->prepare($query_msg_contato);
+        $cad_msg_contato->bindParam(':nome', $this->dados['nome'], PDO::PARAM_STR);
+        $cad_msg_contato->bindParam(':email', $this->dados['email'], PDO::PARAM_STR);
+        $cad_msg_contato->bindParam(':titulo_msg', $this->dados['titulo_msg'], PDO::PARAM_STR);
+        $cad_msg_contato->bindParam(':conteudo_msg', $this->dados['conteudo_msg'], PDO::PARAM_STR);
+
+        $cad_msg_contato->execute();
+
+        if($cad_msg_contato->rowCount()){
+            $_SESSION['msg'] = "Mensagem cadastrada com sucesso";
+            return true;
+        }else{
+            $_SESSION['msg'] = "Erro: Mensagem nao cadastrada com sucesso";
+            return false;
+        }
     }
 }
