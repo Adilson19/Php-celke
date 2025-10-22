@@ -44,10 +44,10 @@ class MsgContatos
         $cad_msg_contato->execute();
 
         if($cad_msg_contato->rowCount()){
-            $_SESSION['msg'] = "Mensagem cadastrada com sucesso";
+            $_SESSION['msg'] = "<p style='color: green';>Mensagem cadastrada com sucesso!</p>";
             return true;
         }else{
-            $_SESSION['msg'] = "Erro: Mensagem nao cadastrada com sucesso";
+            $_SESSION['msg'] = "<p style='color: #ff0000';>Erro: Mensagem nao cadastrada com sucesso</p>";
             return false;
         }
     }
