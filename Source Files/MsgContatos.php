@@ -21,8 +21,8 @@ class MsgContatos
         //  Execução da Query
         $result_msgs_contatos->execute();
         //   Ler mensagem que veio do banco de dados
-        $result_msgs_contatos->fetchAll();
+        return $result_msgs_contatos->fetchAll();
         //  Exibir mensagem
-        var_dump($result_msgs_contatos);
+        //var_dump($result_msgs_contatos);
     }
 }

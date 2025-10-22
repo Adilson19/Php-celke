@@ -10,8 +10,17 @@
         require './Conn.php';
         require './MsgContatos.php';
         $listar = new MsgContatos();
-        $msg = $listar->listar();
-        echo $msg;
+        $dados = $listar->listar();
+        //var_dump($dados);
+        foreach($dados as $row_msg_contato){
+            extract ($row_msg_contato);
+            echo "ID: ".$id."<br>";
+            echo "Nome: ".$nome."<br>";
+            echo "E-mail: ".$email."<br>";
+            echo "Titulo da Mensagem: ".$titulo_msg."<br>";
+            echo "Conteudo da Mensagem: ".$conteudo_msg."<br>";
+            echo "<hr>";
+        }
     ?>
 </body>
 </html>
