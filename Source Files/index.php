@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+        require './Conn.php';
         require './MsgContatos.php';
         $listar = new MsgContatos();
         $msg = $listar->listar();
