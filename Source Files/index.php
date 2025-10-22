@@ -7,7 +7,10 @@
 </head>
 <body>
     <?php
-        // Inclui o arquivo de configuração
+        require './MsgContatos.php';
+        $listar = new MsgContatos();
+        $msg = $listar->listar();
+        echo '$msg';
     ?>
 </body>
 </html>
